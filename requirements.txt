@@ -6,3 +6,4 @@ transformers==4.48.0
 uvicorn
 python-multipart
 httpx
+locust

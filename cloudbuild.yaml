@@ -22,7 +22,7 @@ steps:
     'deploy', 
     'streamlit-cd', 
     '--image', 
-    'europe-west1-docker.pkg.dev/$PROJECT_ID/<registry-name>/<image-name>', 
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/gcp_test_app', 
     '--region', 
     'europe-west1',
     '--platform',

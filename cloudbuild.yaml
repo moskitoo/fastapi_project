@@ -1,0 +1,32 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Build container image'
+  args: [
+    'build',
+    '.',
+    '-t',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/gcp_test_app',
+    '-f',
+    'streamlit.dockerfile'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Push container image'
+  args: [
+    'push',
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/my-container-registry/gcp_test_app'
+  ]
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: 'Deploy to Cloud Run'
+  args: [
+    'run', 
+    'deploy', 
+    'streamlit_cd', 
+    '--image', 
+    'europe-west1-docker.pkg.dev/$PROJECT_ID/<registry-name>/<image-name>', 
+    '--region', 
+    'europe-west1',
+    '--platform',
+    'managed',
+  ]
+options:
+  logging: CLOUD_LOGGING_ONLY

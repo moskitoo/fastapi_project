@@ -5,3 +5,4 @@ torch==2.5.1
 transformers==4.48.0
 uvicorn
 python-multipart
+httpx
